@@ -36,7 +36,7 @@ public class MyClient extends JFrame {
                 while (true) {
                     String message = dis.readUTF();
                     if (message.startsWith("/end")) {
-                        dos.writeUTF(message); //new
+                        dos.writeUTF(message);
                         chatArea.append("Сервер закрыл соединение\n");
                         noTakedEnd = false;
                         break;

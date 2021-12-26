@@ -24,7 +24,7 @@ public class ClientHandler {
             this.dis = new DataInputStream(socket.getInputStream());
             this.dos = new DataOutputStream(socket.getOutputStream());
             isNotDisconnected = false;
-            // добавление таймера
+            // добавление таймера//
             Thread timerThread = new Thread(() -> {
                 try {
                     Thread.sleep(120000);
@@ -50,7 +50,7 @@ public class ClientHandler {
                 } finally {
                     closeConnection();
                     isNotDisconnected = true;
-                    
+
                 }
             }).start();
         } catch (Exception e) {

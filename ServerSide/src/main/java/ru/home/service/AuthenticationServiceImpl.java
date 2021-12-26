@@ -1,7 +1,6 @@
 package ru.home.service;
 
 import ru.home.service.interfaces.AuthenticationService;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,3 +47,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
     }
 }
+//
