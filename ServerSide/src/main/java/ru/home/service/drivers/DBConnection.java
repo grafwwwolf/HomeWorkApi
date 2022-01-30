@@ -59,9 +59,7 @@ public class DBConnection {
     public static String getNickNameByLoginAndPassword(String login, String password) throws SQLException {
         String log;
         String pass;
-        System.out.println(login);
-        System.out.println(password);
-//        ResultSet set = statement.executeQuery("SELECT login, password, nickName FROM userentities WHERE login='grafwwwolf';");
+
         ResultSet set = statement.executeQuery("SELECT login, password, nickName FROM userentities WHERE login='" + login + "';");
         try {
             log = set.getString("login");
@@ -69,8 +67,7 @@ public class DBConnection {
         } catch (SQLException e) {
             return null;
         }
-
-//        return log + " " + pass + " " + set.getString("nickName");
+        
         if (pass.equals(password)) {
             return set.getString("nickName");
         }
