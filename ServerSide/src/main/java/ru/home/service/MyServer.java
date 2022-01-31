@@ -21,7 +21,7 @@ public class MyServer {
     public MyServer() {
         System.out.println("Server started.");
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            cachedService = Executors.newCachedThreadPool();        // сделал Executors.newCachedThreadPool();, т.к. у нас есть таймер отключения незалогированного пользователя в 120 сек
+            cachedService = Executors.newCachedThreadPool();        // сделал Executors.newCachedThreadPool();, т.к. у нас есть таймер отключения незалогированного пользователя в 120 се
             authenticationService = new AuthenticationServiceImpl();
             authenticationService.start();
             handlerList = new ArrayList<>();
