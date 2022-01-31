@@ -57,7 +57,6 @@ public class MyClient extends JFrame {
 
                 while (true) {
                     if (!noTakedEnd) {
-                        closeConnection();
                         msgInputField.setText("");
                         msgInputField.setEditable(false);
                         break;

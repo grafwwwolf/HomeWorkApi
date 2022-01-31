@@ -67,7 +67,7 @@ public class DBConnection {
         } catch (SQLException e) {
             return null;
         }
-        
+
         if (pass.equals(password)) {
             return set.getString("nickName");
         }
