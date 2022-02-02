@@ -16,7 +16,7 @@ public class MyServer {
 
     private AuthenticationService authenticationService;
     private List<ClientHandler> handlerList;
-    private ExecutorService cachedService;
+    private ExecutorService cachedService;    // добавил //тут ExecutorService
 
     public MyServer() {
         System.out.println("Server started.");

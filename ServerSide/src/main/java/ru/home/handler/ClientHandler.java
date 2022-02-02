@@ -25,7 +25,7 @@ public class ClientHandler {
             this.dos = new DataOutputStream(socket.getOutputStream());
             isNotDisconnected = false;
             // добавление таймера//
-            myServer.getCachedService().execute(() -> {
+            myServer.getCachedService().execute(() -> {     //тут ExecutorService
                 try {
                     Thread.sleep(120000);
                 } catch (InterruptedException e) {
@@ -36,7 +36,7 @@ public class ClientHandler {
                 }
             });
             //конец добавления таймера
-            myServer.getCachedService().execute(() -> {
+            myServer.getCachedService().execute(() -> {     //тут ExecutorService
                 try {
                     authentication();
                     if (isNotDisconnected) {
