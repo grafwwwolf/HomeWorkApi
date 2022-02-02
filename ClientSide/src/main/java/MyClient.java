@@ -1,3 +1,5 @@
+import handler.MyClientHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,8 +22,10 @@ public class MyClient extends JFrame {
     private DataInputStream dis;
     private DataOutputStream dos;
     private boolean noTakedEnd = true;
+    private MyClientHandler myClientHandler;
 
     public MyClient() throws HeadlessException, IOException {
+        myClientHandler = new MyClientHandler();
         connectionToServer();
         prepareGUI();
     }
@@ -42,6 +46,9 @@ public class MyClient extends JFrame {
                         break;
                     }
                     if (message.startsWith("/start")) {
+                        myClientHandler.loadHistory(message.split(" ")[1] + ".txt");   // new
+                        myClientHandler.getHistoryList().stream().forEach((a) -> chatArea.append(a + "\n"));
+                        myClientHandler.getHistoryList().clear();
                         chatArea.append(message + "\n");
                         break;
                     }
@@ -50,7 +57,6 @@ public class MyClient extends JFrame {
 
                 while (true) {
                     if (!noTakedEnd) {
-                        closeConnection();
                         msgInputField.setText("");
                         msgInputField.setEditable(false);
                         break;
@@ -64,6 +70,7 @@ public class MyClient extends JFrame {
                         noTakedEnd = false;
                         break;
                     }
+                    myClientHandler.write(inputText);
                     chatArea.append(inputText + "\n");
                 }
             } catch (Exception e) {
@@ -92,6 +99,7 @@ public class MyClient extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        myClientHandler.closeStreams();
     }
 
     private void sendMessage() {

@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MyServer {
 
@@ -14,10 +16,12 @@ public class MyServer {
 
     private AuthenticationService authenticationService;
     private List<ClientHandler> handlerList;
+    private ExecutorService cachedService;    // добавил //тут ExecutorService
 
     public MyServer() {
         System.out.println("Server started.");
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            cachedService = Executors.newCachedThreadPool();        // сделал Executors.newCachedThreadPool();, т.к. у нас есть таймер отключения незалогированного пользователя в 120 сек
             authenticationService = new AuthenticationServiceImpl();
             authenticationService.start();
             handlerList = new ArrayList<>();
@@ -30,6 +34,7 @@ public class MyServer {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            cachedService.shutdown();
             authenticationService.stop();
         }
     }
@@ -80,6 +85,10 @@ public class MyServer {
 
     public AuthenticationService getAuthenticationService() {
         return this.authenticationService;
+    }
+
+    public ExecutorService getCachedService() {
+        return cachedService;
     }
 }
 //
