@@ -52,3 +52,5 @@ markel присоединился к чату.
 markel вышел из чата.
 Now online:
 *** grafwwwolf *** 
+grafwwwolf вышел из чата.
+markel вышел из чата.

@@ -98,3 +98,5 @@ markel: dfg
 markel: dfg
 markel: dfg
 grafwwwolf: мла
+robertrath присоединился к чату.
+grafwwwolf вышел из чата.
